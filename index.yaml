@@ -1,7 +1,7 @@
 indexes:
 - kind: Value
   properties:
-  - name: device
+  - name: device_id
     direction: asc
-  - name: key
+  - name: device_key
     direction: asc

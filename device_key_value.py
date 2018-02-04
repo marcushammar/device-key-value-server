@@ -8,30 +8,35 @@ from google.appengine.ext import ndb
 import webapp2
 
 class Value(ndb.Model):
-    device = ndb.StringProperty()
-    key = ndb.StringProperty()
-    value = ndb.StringProperty()
+    device_id = ndb.StringProperty()
+    device_key = ndb.StringProperty()
+    device_value = ndb.StringProperty()
 
 class SetPage(webapp2.RequestHandler):
 
     def get(self):
-        device = self.request.get('device','')
-        key = self.request.get('key','')
-        value = self.request.get('value','')
+        device_id = self.request.get('device','')
+        device_key = self.request.get('key','')
+        device_value = self.request.get('value','')
 
-        if (value == ''):
-            q = Value.query(Value.device == device, Value.key == key)
+        if (device_value == ''):
+            q = Value.query(Value.device_id == device_id, Value.device_key == device_key)
 
             if q.iter().has_next():
-                self.response.write(q.iter().next().value)
+                self.response.write(q.iter().next().device_value)
             else:
                 self.response.write('ERROR')
 
         else:
+            q = Value.query(Value.device_id == device_id, Value.device_key == device_key)
+
+            for p in q:
+                p.key.delete()
+
             value = Value()
-            value.device = self.request.get('device')
-            value.key = self.request.get('key')
-            value.value = self.request.get('value')
+            value.device_id = self.request.get('device')
+            value.device_key = self.request.get('key')
+            value.device_value = self.request.get('value')
             value.put()
             self.response.write('OK')
 
