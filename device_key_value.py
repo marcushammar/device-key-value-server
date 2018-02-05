@@ -28,6 +28,7 @@ class SetPage(webapp2.RequestHandler):
             if q.iter().has_next():
                 self.response.write(q.iter().next().device_value)
             else:
+                self.error(404)
                 self.response.write('ERROR (Device and/or Key missing)')
 
         else:
@@ -47,6 +48,7 @@ class SetPage(webapp2.RequestHandler):
                 value.put()
                 self.response.write('OK')
             else:
+                self.error(404)
                 self.response.write('ERROR (Device missing)')
 
 app = webapp2.WSGIApplication([
