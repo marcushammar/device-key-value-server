@@ -31,7 +31,30 @@ class Value(ndb.Model):
     device_key = ndb.StringProperty()
     device_value = ndb.StringProperty()
 
-class SetPage(webapp2.RequestHandler):
+class Delete(webapp2.RequestHandler):
+
+    def get(self):
+        device_id = self.request.get('device','')
+
+        q = Value.query(Value.device_id == device_id)
+        for p in q:
+            p.key.delete()
+
+        q = Device.query(Device.device_id == device_id)
+        for p in q:
+            p.key.delete()
+
+        self.response.write('OK')
+
+class Add(webapp2.RequestHandler):
+
+    def get(self):
+        device = Device()
+        device.device_id = self.request.get('device')
+        device.put()
+        self.response.write('OK')
+
+class SetOrGet(webapp2.RequestHandler):
 
     def get(self):
         device_id = self.request.get('device','')
@@ -68,5 +91,7 @@ class SetPage(webapp2.RequestHandler):
                 self.response.write('ERROR (Device missing)')
 
 app = webapp2.WSGIApplication([
-    ('/', SetPage),
+    ('/', SetOrGet),
+    ('/add/', Add),
+    ('/delete/', Delete),
 ], debug=True)

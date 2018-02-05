@@ -7,15 +7,15 @@ threadsafe: true
 handlers:
 
 - url: /add/
-  script: add.app
+  script: main.app
   login: admin
 
 - url: /delete/
-  script: delete.app
+  script: main.app
   login: admin
 
 - url: /
-  script: device_key_value.app
+  script: main.app
 
 libraries:
 
