@@ -5,6 +5,9 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /add/
+  script: add.app
+  login: admin
 - url: /.*
   script: device_key_value.app
 
