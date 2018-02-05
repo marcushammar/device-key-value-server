@@ -61,6 +61,17 @@ class SetOrGet(webapp2.RequestHandler):
         device_key = self.request.get('key','')
         device_value = self.request.get('value','')
 
+        q = Device.query(Device.device_id == device_id)
+        if q.count() != 1:
+            self.error(404)
+            self.response.write('ERROR (Device not found)')
+            return
+
+        if (device_key == ''):
+            self.error(404)
+            self.response.write('ERROR (Key should not be empty)')
+            return
+
         if (device_value == ''):
             q = Value.query(Value.device_id == device_id, Value.device_key == device_key)
 
@@ -68,7 +79,7 @@ class SetOrGet(webapp2.RequestHandler):
                 self.response.write(q.iter().next().device_value)
             else:
                 self.error(404)
-                self.response.write('ERROR (Device and/or Key missing)')
+                self.response.write('ERROR (Key not found)')
 
         else:
             q = Device.query(Device.device_id == device_id)
