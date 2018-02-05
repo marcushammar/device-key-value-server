@@ -61,6 +61,10 @@ class Add(webapp2.RequestHandler):
             self.response.write('ERROR (Device should not be empty)')
             return
 
+        q = Device.query(Device.device_id == device_id)
+        for p in q:
+            p.key.delete()
+
         device = Device()
         device.device_id = device_id
         device.put()
