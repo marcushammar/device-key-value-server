@@ -4,20 +4,21 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-handlers:
+libraries:
+- name: webapp2
+  version: latest
 
+handlers:
 - url: /add/
   script: main.app
   login: admin
+  secure: always
 
 - url: /delete/
   script: main.app
   login: admin
+  secure: always
 
 - url: /
   script: main.app
-
-libraries:
-
-- name: webapp2
-  version: latest
+  secure: optional
