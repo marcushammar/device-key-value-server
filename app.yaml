@@ -5,15 +5,19 @@ api_version: 1
 threadsafe: true
 
 handlers:
+
 - url: /add/
   script: add.app
   login: admin
+
 - url: /delete/
   script: delete.app
   login: admin
-- url: /.*
+
+- url: /
   script: device_key_value.app
 
 libraries:
+
 - name: webapp2
   version: latest
