@@ -30,6 +30,7 @@ class Value(ndb.Model):
     device_id = ndb.StringProperty()
     device_key = ndb.StringProperty()
     device_value = ndb.StringProperty()
+    device_timestamp = ndb.DateTimeProperty(auto_now=True)
 
 class Delete(webapp2.RequestHandler):
 
