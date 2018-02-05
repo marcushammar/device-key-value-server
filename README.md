@@ -21,12 +21,21 @@ with your values.
 To add a device, request the following address using your web browser:
 https://APPLICATION.appspot.com/add/?device=DEVICE
 
+To delete a device, request the following address using your web browser:
+https://APPLICATION.appspot.com/delete/?device=DEVICE
+
 To save a key-value pair, request the following address from your IOT device:
-http://APPLICATION.appspot.com/?device=DEVICE&key=KEY&value=VALUE
+https://APPLICATION.appspot.com/?device=DEVICE&key=KEY&value=VALUE
 
 To read a value based on a key, request the following address from your IOT
 device:
-http://APPLICATION.appspot.com/?device=DEVICE&key=KEY
+https://APPLICATION.appspot.com/?device=DEVICE&key=KEY
+
+
+Security
+--------
+To add or delete devices you must use HTTPS. HTTPS is also highly recommended
+when saving or reading a key-value pair but it is possible to use HTTP as well.
 
 
 License
