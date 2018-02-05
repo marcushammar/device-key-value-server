@@ -36,6 +36,11 @@ class Delete(webapp2.RequestHandler):
     def get(self):
         device_id = self.request.get('device','')
 
+        if (device_id == ''):
+            self.error(404)
+            self.response.write('ERROR (Device should not be empty)')
+            return
+
         q = Value.query(Value.device_id == device_id)
         for p in q:
             p.key.delete()
@@ -49,8 +54,15 @@ class Delete(webapp2.RequestHandler):
 class Add(webapp2.RequestHandler):
 
     def get(self):
+        device_id = self.request.get('device','')
+
+        if (device_id == ''):
+            self.error(404)
+            self.response.write('ERROR (Device should not be empty)')
+            return
+
         device = Device()
-        device.device_id = self.request.get('device')
+        device.device_id = device_id
         device.put()
         self.response.write('OK')
 
