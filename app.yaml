@@ -8,6 +8,9 @@ handlers:
 - url: /add/
   script: add.app
   login: admin
+- url: /delete/
+  script: delete.app
+  login: admin
 - url: /.*
   script: device_key_value.app
 
