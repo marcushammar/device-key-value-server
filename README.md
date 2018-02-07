@@ -1,9 +1,9 @@
-Device Key Value
-================
+Device Key Value Server
+=======================
 This application runs on Google App Engine. It will give you access to a
-key-value database that you can use from any IOT device that can support HTTP.
-Values can be saved by one IOT device and read by another IOT device. The
-purpose is to use a common database for your IOT devices.
+key-value database that you can use from any IOT device that can support HTTPS
+or HTTP. Values can be saved by one IOT device and read by another IOT device.
+The purpose is to use a common database for your IOT devices.
 
 
 Installation
