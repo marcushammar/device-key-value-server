@@ -18,6 +18,7 @@ limitations under the License.
 
 import os
 import urllib
+import logging
 
 from google.appengine.ext import ndb
 
@@ -77,6 +78,8 @@ class SetOrGet(webapp2.RequestHandler):
         device_id = self.request.get('device','')
         device_key = self.request.get('key','')
         device_value = self.request.get('value','')
+
+        logging.info('HTTPS: ' + self.request.environ['HTTPS'])
 
         q = Device.query(Device.device_id == device_id)
         if q.count() != 1:
