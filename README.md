@@ -19,16 +19,20 @@ To use the application, replace the values below written in uppercase letters
 with your values.
 
 To add a device, request the following address using your web browser:
+
 https://APPLICATION.appspot.com/add/?device=DEVICE
 
 To delete a device, request the following address using your web browser:
+
 https://APPLICATION.appspot.com/delete/?device=DEVICE
 
 To save a key-value pair, request the following address from your IOT device:
+
 https://APPLICATION.appspot.com/?device=DEVICE&key=KEY&value=VALUE
 
 To read a value based on a key, request the following address from your IOT
 device:
+
 https://APPLICATION.appspot.com/?device=DEVICE&key=KEY
 
 
